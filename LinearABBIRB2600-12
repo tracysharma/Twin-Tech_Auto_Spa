@@ -21,13 +21,13 @@ classdef LinearABBIRB2600-12 < RobotBaseClass
         function CreateModel(self)   
             % Create the UR5 model mounted on a linear rail
             link(1) = Link([pi     0       0       pi/2    1]); % PRISMATIC Link - linear rail
-%%add ABB-IRB-2600/12's dh parameters here
-            %link(2) = Link('d',0.1519,'a',0,'alpha',pi/2,'qlim',deg2rad([-360 360]), 'offset',0);
-            %link(3) = Link('d',0,'a',-0.24365,'alpha',0,'qlim', deg2rad([-360 360]), 'offset',0);
-            %link(4) = Link('d',0,'a',-0.21325,'alpha',0,'qlim', deg2rad([-360 360]), 'offset', 0);
-            %link(5) = Link('d',0.11235,'a',0,'alpha',pi/2,'qlim',deg2rad([-360 360]),'offset', 0);
-            %link(6) = Link('d',0.08535,'a',0,'alpha',-pi/2,'qlim',deg2rad([-360,360]), 'offset',0);
-            %link(7) = Link('d',0.0819,'a',0,'alpha',0,'qlim',deg2rad([-360,360]), 'offset', 0);
+%%ABB-IRB-2600/12's dh parameters ADDED
+            %link(2) = Link('d',455,'a',0,'alpha',0,'qlim',deg2rad([-360 360]), 'offset',0);
+            %link(3) = Link('d',0,'a',150,'alpha',pi/2,'qlim', deg2rad([-360 360]), 'offset',0);
+            %link(4) = Link('d',0,'a',900,'alpha',0,'qlim', deg2rad([-360 360]), 'offset', 0);
+            %link(5) = Link('d',795,'a',115,'alpha',pi/2,'qlim',deg2rad([-360 360]),'offset', 0);
+            %link(6) = Link('d',0,'a',0,'alpha',pi/2,'qlim',deg2rad([-360,360]), 'offset',0);
+            %link(7) = Link('d',165,'a',0,'alpha',-pi/2,'qlim',deg2rad([-360,360]), 'offset', 0);
 
 %%add ABB-IRB-2600/12's joint limits here
             % Incorporate joint limits
