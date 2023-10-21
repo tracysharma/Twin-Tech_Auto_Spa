@@ -21,8 +21,14 @@ hold on;
 
 surf([-6.8,-6.8;6.8,6.8] ...
 ,[-2.2,2.2;-2.2,2.2] ...
-,[0.1,0.1;0.1,0.1] ...
+,[0.01,0.01;0.01,0.01] ...
 ,'CData',imread('hazardfloor.jpg') ...
+,'FaceColor','texturemap');
+
+surf([6,6;6,6] ...                      % each coloumn is one point
+,    [6,-6;6,-6] ...
+,    [0,0;6,6] ...
+,'CData',imread('clear-roll-up-door.jpg') ...
 ,'FaceColor','texturemap');
 
 hold on;
@@ -43,21 +49,22 @@ fireextinguisher_1 = PlaceObject('fireExtinguisher.ply',[-4.5,-5.8,0]);
             verts(:,1) = verts(:,1) * 1.2;
             set(fireextinguisher_1,'Vertices',verts(:,1:3));
 
-
-EmergencyButton_1 = PlaceObject('emergencyStopWallMounted.ply',[0,0.8,-1]);
-            verts = [get(EmergencyButton_1,'Vertices'), ones(size(get(EmergencyButton_1,'Vertices'),1),1)] * trotz(pi);
+Car_2 = PlaceObject('toyotaC.ply',[-0.5,0,0.1]);
+            verts = [get(Car_2,'Vertices'), ones(size(get(Car_2,'Vertices'),1),1)] * trotz(pi);
             verts(:,1) = verts(:,1) * 1.2;
-            set(EmergencyButton_1,'Vertices',verts(:,1:3));
+            set(Car_2,'Vertices',verts(:,1:3));
+
 
 hold on;
+
             
-                                                                 %https://au.mathworks.com/matlabcentral/answers/826675-to-build-a-3d-room-with-4-walls
-
-hold on;
+                                                                 %https://au.mathworks.com/matlabcentral/answers/826675-to-build-a-3d-room-with-4-hold on;
 
 surf([-10.8,-10.8;10.8,10.8] ...
 ,[-10.8,10.8;-10.8,10.8] ...
 ,[0,0;0,0] ...
 ,'CData',imread('rm334-ae-35.jpg') ...
 ,'FaceColor','texturemap');
+
+ r = LinearUR10;
 
