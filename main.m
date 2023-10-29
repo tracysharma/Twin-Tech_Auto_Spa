@@ -6,6 +6,8 @@ classdef main
          properties(Access = public)              
         plyFileNameStem = 'UR10Robot';
         linearUR10Robot;
+        %dock figure
+        set(0,'DefaultFigureWindowStyle','docked')
          end
 
     methods(Static)
