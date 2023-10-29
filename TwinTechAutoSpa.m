@@ -23,25 +23,24 @@
 %% Environment 
     hold on; 
     view(3)
+    set(0,'DefaultFigureWindowStyle','docked')
     Environment.main; %load environment from class
     
-
     hold on;
 
 % %% Call Robots to the environment 
-%     rABB = LinearABB();
-%     rUR10 = LinearUR10();
-% 
-%     hold on;
+    rABB = LinearABB(transl(2,1.75,0));
+    rUR10 = LinearUR10(transl(-3,1.75,0)*trotz(pi));
+
+    hold on;
 
 %% Body -> Functions to be run below 
 
 %set initial joint angle positions
 qABB = zeros(1,7);
 qUR10 = zeros(1,7);
-%Set end-effector positions 
-endEffectorTrABB = rABB.model.ikcon(r.model.fkine(qABB));
-endEffectorTrUR10 = rUR10.model.ikcon(r.model.fkine(qUR10));
+
+
 
 
 %% 
