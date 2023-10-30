@@ -23,25 +23,91 @@
 %% Environment 
     hold on; 
     view(3)
+    set(0,'DefaultFigureWindowStyle','docked')
     Environment.main; %load environment from class
     
-
     hold on;
 
-% %% Call Robots to the environment 
-%     rABB = LinearABB();
-%     rUR10 = LinearUR10();
-% 
-%     hold on;
+%% Call Robots to the environment 
+    rABB = LinearABB(transl(2,1.75,0));
+    rUR10 = LinearUR10(transl(-3,1.75,0)*trotz(pi));
+
+    hold on;
 
 %% Body -> Functions to be run below 
 
 %set initial joint angle positions
 qABB = zeros(1,7);
-qUR10 = zeros(1,7);
-%Set end-effector positions 
-endEffectorTrABB = rABB.model.ikcon(r.model.fkine(qABB));
-endEffectorTrUR10 = rUR10.model.ikcon(r.model.fkine(qUR10));
+qUR10 = zeros(1,8);
 
 
+%inverse kinematics with optimisation of joint angles 
+        q1 = rUR10.model.ikcon(rUR10.model.fkine(qUR10));   
+        q2 = rUR10.model.ikcon(transl(-2,1.5,2));
+        q3 = rUR10.model.ikcon(transl(-2,1.6,1.5));
+        q4 = rUR10.model.ikcon(transl(-2,1.7,2));
+        q5 = rUR10.model.ikcon(transl(-3,1.8,1.5));
+        q6 = rUR10.model.ikcon(transl(-3,1.9,2));
+        q7 = rUR10.model.ikcon(transl(-3.1,2,1.5));
+        q8 = rUR10.model.ikcon(transl(-3.2,2,1.5));
+        q9 = rUR10.model.ikcon(transl(-3.3,2,1.5));
+        q10 = rUR10.model.ikcon(transl(-3.3,2,1.5));
+
+
+        qPath1 = jtraj(q1,q2,steps);
+        qPath2 = jtraj(q2,q3,steps);
+        qPath3 = jtraj(q3,q4,steps);
+        qPath4 = jtraj(q4,q5,steps);
+        qPath5 = jtraj(q5,q6,steps);
+        qPath6 = jtraj(q6,q7,steps);
+        qPath7 = jtraj(q7,q8,steps);
+        qPath8 = jtraj(q8,q9,steps);
+        qPath9 = jtraj(q9,q10,steps);
+
+        for i = 1:steps
+            %Animate LinearUR3 to run qMatrix trajectory 
+            rUR10.model.animate(qPath1(i, :));
+            drawnow();
+        end
+        for i = 1:steps
+        %Animate LinearUR3 to run qMatrix trajectory 
+        rUR10.model.animate(qPath2(i, :));
+        drawnow();
+        end
+        for i = 1:steps
+            %Animate LinearUR3 to run qMatrix trajectory
+            rUR10.model.animate(qPath3(i, :));
+            drawnow();
+        end
+
+        for i = 1:steps
+            %Animate LinearUR3 to run qMatrix trajectory
+            rUR10.model.animate(qPath4(i, :));
+            drawnow();
+        end
+        % for i = 1:steps
+        %     %Animate LinearUR3 to run qMatrix trajectory
+        %     rUR10.model.animate(qPath5(i, :));
+        %     drawnow();
+        % end
+        % for i = 1:steps
+        %     %Animate LinearUR3 to run qMatrix trajectory
+        %     rUR10.model.animate(qPath6(i, :));
+        %     drawnow();
+        % end
+        % for i = 1:steps
+        %     %Animate LinearUR3 to run qMatrix trajectory
+        %     rUR10.model.animate(qPath7(i, :));
+        %     drawnow();
+        % end
+        % for i = 1:steps
+        %     %Animate LinearUR3 to run qMatrix trajectory
+        %     rUR10.model.animate(qPath8(i, :));
+        %     drawnow();
+        % end
+        %         for i = 1:steps
+        %     %Animate LinearUR3 to run qMatrix trajectory
+        %     rUR10.model.animate(qPath9(i, :));
+        %     drawnow();
+        % end
 %% 
