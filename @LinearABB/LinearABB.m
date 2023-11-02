@@ -28,12 +28,15 @@ function self = LinearABB(baseTr)
             link(4) = Link('d',0,'a',-0.115,'alpha',pi/2,'qlim',[-180 75]*pi/180,'offset',pi);
             link(5) = Link('d',0.795,'a',0,'alpha',pi/2,'qlim',[-400 400]*pi/180);
             link(6) = Link('d',0,'a',0,'alpha',pi/2,'qlim',[-120 120]*pi/180,'offset',pi);
-            link(7) = Link('d',0.165,'a',0,'alpha',-pi/2,'qlim',[-400 400]*pi/180);
+            link(7) = Link('d',0.165,'a',0,'alpha',-pi/2,'qlim',[-400 400]*pi/180,'offset',pi/2);
 
             % Incorporate joint limits
-            link(1).qlim = [0.8 0.01];
+            link(1).qlim = [-3.8   -0.01];
+            
         
             self.model = SerialLink(link,'name',self.name);
+
+            % self.model.teach()
         end
      
     end
