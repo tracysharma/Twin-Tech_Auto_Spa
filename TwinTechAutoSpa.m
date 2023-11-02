@@ -1,7 +1,7 @@
 % Main script for TwinTech Auto Spa System
 % Elisa Zarriello - 13895329 
-% Tracy Sharma - 
-% Aleisha Tran - 
+% Tracy Sharma - 13888223
+% Aleisha Tran - 14244103
 
 % Description 
     % We are designing an automated car wash system designed for the 
@@ -18,7 +18,8 @@
 %% Properties
     %IF NEEEDED - TBC
     %Set number of steps taken for trajectory 
-        steps = 100;
+        steps = 50;
+
 
 %% Environment 
     hold on; 
@@ -28,7 +29,7 @@
     
     hold on;
 
-% %% Call Robots to the environment 
+%% Call Robots to the environment 
     rABB = LinearABB(transl(2,1.75,0));
     rUR10 = LinearUR10(transl(-3,1.75,0)*trotz(pi));
 
@@ -38,9 +39,17 @@
 
 %set initial joint angle positions
 qABB = zeros(1,7);
-qUR10 = zeros(1,7);
+qUR10 = zeros(1,8);
 
+%% Run Scenario 1 - washNrinse
+washNrinse(rABB, qABB, rUR10, qUR10, steps);
 
+%% Run Scenario 2 - wheelScrub (SEMI-COMPLETE -> READY FOR COLLISION TESTING) 
+wheelScrub(rABB, qABB, rUR10, qUR10, steps);
 
+%% Run Scenario 3 - sprayClean
+sprayClean(rABB, qABB, rUR10, qUR10, steps);
 
 %% 
+
+
