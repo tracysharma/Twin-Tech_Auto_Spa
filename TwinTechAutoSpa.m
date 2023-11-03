@@ -38,17 +38,18 @@
 
 %set initial joint angle positions
 qABB = zeros(1,7);
-qUR10 = zeros(1,8);
+qUR10 = zeros(1,7);
 
 %% Run Scenario 1 - washNrinse
 washNrinse(rABB, qABB, rUR10, qUR10, steps);
 
-%% Run Scenario 2 - wheelScrub (SEMI-COMPLETE -> READY FOR COLLISION TESTING) 
-% + Environment Update 
+%% Environment Update 
 Environment.update;
 
+%% Run Scenario 2 - wheelScrub (SEMI-COMPLETE -> READY FOR COLLISION TESTING)
 wheelScrub(rABB, qABB, rUR10, qUR10, steps);
 
-%% Run Scenario 3 - sprayClean
-sprayClean(rABB, qABB, rUR10, qUR10, steps);
-
+% %% Run Scenario 3 - sprayClean
+% sprayClean(rABB, qABB, rUR10, qUR10, steps);
+ 
+%% 
