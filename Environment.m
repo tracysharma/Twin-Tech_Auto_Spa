@@ -55,6 +55,29 @@ classdef Environment
                 [0, 0; 0, 0], ...
                 'CData', imread('Hazard.jpg'), ...
                 'FaceColor', 'texturemap');
+                          surf([4.01, 4.01; 4.01, 4.01], ...
+                [-2, -1.1; -2, -1.1], ...
+                [1.8,1.8; 1.3, 1.3], ...
+                'CData', imread('Robotinuse.jpg'), ...
+                'FaceColor', 'texturemap');
+
+             surf([1.6, 0.7; 1.6, 0.7], ...
+                [3.98, 3.98; 3.98, 3.98], ...
+                [1.8,1.8; 1.3, 1.3], ...
+                'CData', imread('Robotinuse - Copy.jpg'), ...
+                'FaceColor', 'texturemap');
+
+             surf([3.98, 3.98; 3.98, 3.98], ...
+                [-2, -1.1; -2, -1.1], ...
+                [1.8,1.8; 1.3, 1.3], ...
+                'CData', imread('Robotinuse - Copy.jpg'), ...
+                'FaceColor', 'texturemap');
+
+             surf([3.98, 3.98; 3.98, 3.98], ...
+                [-2, -1.1; -2, -1.1], ...
+                [1.25,1.25; 0.85, 0.85], ...
+                'CData', imread('SlipSign.jpg'), ...
+                'FaceColor', 'texturemap');
 
             % % Your provided code for Fence starts here
             % Fence = PlaceObject('fenceAssemblyGreenRectangle4x8x2.5m.ply',[1.45,0,-1]);
@@ -64,7 +87,7 @@ classdef Environment
             % % Your provided code for Fence ends here
 
             % Your provided code for Car starts here
-            Car = PlaceObject('toyotaC.ply',[-1.5,0.8,0.1]);
+            Car = PlaceObject('BigRedCar.ply',[-1.5,0.8,0]);
             verts = [get(Car,'Vertices'), ones(size(get(Car,'Vertices'),1),1)] * trotz(pi);
             verts(:,1) = verts(:,1) * 1.2;
             set(Car,'Vertices',verts(:,1:3));
@@ -84,19 +107,19 @@ classdef Environment
             set(fireextinguisher_2,'Vertices',verts(:,1:3));
             % Your provided code for fireextinguisher_2 ends here
 
-            % Your provided code for PersonOutside_1 starts here
-            PersonOutside_1 = PlaceObject('personMaleCasual.ply',[-2.5,-3.4,0]);
+            % % Your provided code for PersonOutside_1 starts here
+            % PersonInside_1 = PlaceObject('personMaleCasual.ply',[2.6,-2.7,0]);
+            % verts = [get(PersonInside_1,'Vertices'), ones(size(get(PersonInside_1,'Vertices'),1),1)] * trotz(pi);
+            % verts(:,1) = verts(:,1) * 1.2;
+            % set(PersonInside_1,'Vertices',verts(:,1:3));
+            % % Your provided code for PersonOutside_1 ends here
+
+            %Your provided code for PersonInside_1 starts here
+            PersonOutside_1 = PlaceObject('personMaleCasual.ply',[-5,1,0]);
             verts = [get(PersonOutside_1,'Vertices'), ones(size(get(PersonOutside_1,'Vertices'),1),1)] * trotz(pi);
             verts(:,1) = verts(:,1) * 1.2;
             set(PersonOutside_1,'Vertices',verts(:,1:3));
-            % Your provided code for PersonOutside_1 ends here
-
-            % Your provided code for PersonInside_1 starts here
-            PersonInside_1 = PlaceObject('personMaleCasual.ply',[-5,1,0]);
-            verts = [get(PersonInside_1,'Vertices'), ones(size(get(PersonInside_1,'Vertices'),1),1)] * trotz(pi);
-            verts(:,1) = verts(:,1) * 1.2;
-            set(PersonInside_1,'Vertices',verts(:,1:3));
-            % Your provided code for PersonInside_1 ends here
+            %Your provided code for PersonInside_1 ends here
 
             % Your provided code for EStopOne_1 starts here
             EStopOne_1 = PlaceObject('emergencyStopWallMounted.ply',[-1,-3.9,1]);
@@ -112,5 +135,15 @@ classdef Environment
             set(EStopTwo_1,'Vertices',verts(:,1:3));
             % Your provided code for EStopTwo_1 ends here
         end
+        function update()
+            % Your provided code for PersonOutside_1 starts here
+            PersonInside_1 = PlaceObject('personMaleCasual.ply',[-2.1,-1,0]);
+            verts = [get(PersonInside_1,'Vertices'), ones(size(get(PersonInside_1,'Vertices'),1),1)] * trotz(pi);
+            verts(:,1) = verts(:,1) * 1.2;
+            set(PersonInside_1,'Vertices',verts(:,1:3));
+            % Your provided code for PersonOutside_1 ends here
+
+
+        end 
     end
 end

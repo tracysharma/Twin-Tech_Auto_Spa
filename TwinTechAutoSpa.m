@@ -16,7 +16,6 @@
     clc
 
 %% Properties
-    %IF NEEEDED - TBC
     %Set number of steps taken for trajectory 
         steps = 50;
 
@@ -45,11 +44,11 @@ qUR10 = zeros(1,8);
 washNrinse(rABB, qABB, rUR10, qUR10, steps);
 
 %% Run Scenario 2 - wheelScrub (SEMI-COMPLETE -> READY FOR COLLISION TESTING) 
+% + Environment Update 
+Environment.update;
+
 wheelScrub(rABB, qABB, rUR10, qUR10, steps);
 
 %% Run Scenario 3 - sprayClean
 sprayClean(rABB, qABB, rUR10, qUR10, steps);
-
-%% 
-
 
